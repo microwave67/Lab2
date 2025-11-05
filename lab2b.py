@@ -26,9 +26,16 @@ def find_min_max(list):
     print (min_max)
     return (min_max)
 
-def sort_temperature():
-    
-    print("sort_temperature")
+def sort_temperature(list):
+    arr_result = list.copy()
+    n = len(arr_result)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr_result[j] > arr_result[j + 1]:
+                arr_result[j], arr_result[j + 1] = arr_result[j + 1], arr_result[j]
+    print(arr_result)
+    return arr_result
+
 
 def calc_median_temperature(list):
     if len(list) % 2 == 1:
@@ -38,6 +45,7 @@ def calc_median_temperature(list):
         index = int(len(list) / 2)
         median = (list[index] + list[index - 1]) / 2
     print(median)
+    return median
 
 def main():
     print ("ET0735 (DevOps for AIot) - Lab 2 - Introduction to Python")
@@ -45,8 +53,8 @@ def main():
     num_list = get_user_input()
     calc_average(num_list)
     find_min_max(num_list)
-    sort_temperature()
-    calc_median_temperature(num_list)
+    sort_list = sort_temperature(num_list)
+    calc_median_temperature(sort_list)
     
 
 if __name__ == "__main__":
